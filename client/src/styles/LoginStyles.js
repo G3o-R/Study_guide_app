@@ -8,7 +8,7 @@ export const LoginWrapper = styled.div`
 
 `;
 
-export const LoginForm = styled.from`
+export const LoginForm = styled.form`
 
 `;
 
