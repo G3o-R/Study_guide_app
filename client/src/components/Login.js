@@ -29,10 +29,12 @@ export default function Login(){
                     <h2 name="title"> The Study Guide App</h2>
                     <input type="text" id="username" name="username" value={username} placeholder="Username..." onChange={handleChange} />
                     <input type="text" id="password" name="password" value={password} placeholder="Password" onChange={handleChange} />
-                    <button type="submit">login</button>
+                    <button name="loginSubmit" type="submit">login</button>
                 </form>
                 <div name="create-account">
-                    <p>Don't have an account? <span onClick={(e)=>navigate("/sign-up")}>sign up</span></p>
+                    <div name="sign-up-link-wrapper">
+                        <p>Don't have an account? <span onClick={(e)=>navigate("/sign-up")}>sign up</span></p>
+                    </div>
                 </div>
             </div>
         </div>
