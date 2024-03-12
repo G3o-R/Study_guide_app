@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 export default function Login(){
+    const navigate = useNavigate()
     const [loginData, setLoginData] = useState({
         username: "",
         password: ""
@@ -29,6 +31,9 @@ export default function Login(){
                     <input type="text" id="password" name="password" value={password} placeholder="Password" onChange={handleChange} />
                     <button type="submit">login</button>
                 </form>
+                <div name="create-account">
+                    <p>Don't have an account? <span onClick={(e)=>navigate("/sign-up")}>sign up</span></p>
+                </div>
             </div>
         </div>
     )
