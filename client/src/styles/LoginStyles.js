@@ -6,12 +6,12 @@ export const LoginPage = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #F5F7FC;
 `;
 
 
 
 export const ContainerWrapper = styled.div`
-  height:100%;
   padding-top:6rem;
 `;
 
@@ -24,14 +24,12 @@ export const FormContainer = styled.div`
   padding: 40px;
   border: 1px solid #dbdbdb;
   border-radius: 35px;
-  width: 100%;
-  max-width: 350px;
+  width: 350px;
   aspect-ratio: 7/9;
   margin: 0 auto;
 `;
 
 export const LoginForm = styled.form`
-  max-width: 300px;
   margin: 0 auto;
 `;
 
@@ -42,6 +40,8 @@ export const Error = styled.h4`
 
 export const Title = styled.h2`
   text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
 `;
 
 export const FormGroup = styled.div`
