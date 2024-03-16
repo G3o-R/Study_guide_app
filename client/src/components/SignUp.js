@@ -38,7 +38,14 @@ function SignUp() {
 
   function handleSignUpSubmit(e) {
     e.preventDefault();
-    console.log(signUpData)
+    console.log("before fetch")
+    fetch ("/signup", {
+      method: "Post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(signUpData)
+    })
   }
 
   function navigateToLogin(){
