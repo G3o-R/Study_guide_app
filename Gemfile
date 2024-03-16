@@ -8,6 +8,9 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
+#use Active Model has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 6.0"
 
@@ -18,8 +21,8 @@ gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
 # gem "rack-cors"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
@@ -27,3 +30,4 @@ group :development do
   # gem "spring"
 end
 
+gem "active_model_serializers", "~> 0.10.12"
