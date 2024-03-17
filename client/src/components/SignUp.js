@@ -9,16 +9,20 @@ import {
   SignUpButton,
   LoginLink,
   LoginContainer,
-  Error,
+  // Error,
   FormGroup,
   ButtonContainer,
   ShowButton
 } from "../styles/SignUpStyles.js";
 
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../redux/features/userSlice.js";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [showPassword, setShowPassword] = useState(false)
 
   const [signUpData, setSignupData] = useState({
@@ -38,14 +42,7 @@ function SignUp() {
 
   function handleSignUpSubmit(e) {
     e.preventDefault();
-    console.log("before fetch")
-    fetch ("/signup", {
-      method: "Post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signUpData)
-    })
+    dispatch(signUpUser(signUpData))
   }
 
   function navigateToLogin(){
