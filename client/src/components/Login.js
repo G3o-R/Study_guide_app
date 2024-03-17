@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import {
   LoginPage,
@@ -17,8 +16,14 @@ import {
   // Error
 } from "../styles/LoginStyles";
 
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../redux/features/userSlice";
+
 export default function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+
   const [showPassword, setShowPassword] = useState(false);
   const [loginData, setLoginData] = useState({
     username: "",
@@ -35,7 +40,7 @@ export default function Login() {
 
   function handleLoginSubmit(e) {
     e.preventDefault();
-    console.log(loginData)
+    dispatch(loginUser(loginData))
   }
 
   function navigateToSignUp() {
