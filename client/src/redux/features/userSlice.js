@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 // handles signing up
 export const signUpUser = createAsyncThunk("user/signUpUser", async (signUpData, thunkAPI) => {
     try {
@@ -105,9 +106,13 @@ const userSlice = createSlice({
         })
         .addCase(getMe.fulfilled, (state, action) => {
             state.loading = false;
-            console.log(action.payload)
             state.user = action.payload;
             state.errors = [];
+        })
+        .addCase(getMe.rejected, (state, action) => {
+            state.loading = false;
+            state.user = null;
+            state.errors = action.payload;
         })
     }
 })

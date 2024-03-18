@@ -12,7 +12,6 @@ import { getMe } from '../redux/features/userSlice';
 function App() {
   const dispatch = useDispatch()
   const {user, loading} = useSelector((state => state.user))
-  console.log(loading)
 
   useEffect(()=>{
     dispatch(getMe())
@@ -21,12 +20,13 @@ function App() {
   if (loading && !user){
     return <div>loading...</div>
   } else if(!user){
-    <BrowserRouter>
-    <Routes>
-      <Route path="/login" element={<Login/>} />
-      <Route path="/sign-up" element={<SignUp/>} />
-    </Routes>
-  </BrowserRouter>
+    return <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/sign-up" element={<SignUp/>} />
+      </Routes>
+    </BrowserRouter>
   }
 
   return (
