@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
+import Navbar from './Navabar';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <Navbar />
         <Routes>
           <Route path="/login" element={<Navigate to="/" />} />
           <Route path="/sign-up" element={<Navigate to="/" />} />
