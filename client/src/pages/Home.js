@@ -1,10 +1,18 @@
-
+import { 
+    HomePageStyles,
+    Header,
+    HeaderContainer
+} from "../styles/HomeStyles"
 
 export default function Home(){
 
     return(
-        <div className="home">
-            home is here
-        </div>
+        <HomePageStyles>
+            <HeaderContainer>
+                <Header>Your Desk</Header>
+                <hr/>
+            </HeaderContainer>
+
+        </HomePageStyles>
     )
 }

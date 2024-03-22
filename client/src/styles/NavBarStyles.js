@@ -6,13 +6,10 @@ export const StyledNavBar = styled.div`
   top: 0;
   display: flex;
   flex-direction: column;
-  /* align-items: flex-start; */
   height: 100vh;
-  background-color: #0c4f83;
+  background-color: #030416;
   color: white;
   width: 7rem;
-  /* padding: 24px; */
-  /* margin:24px; */
   z-index: 1;
 `;
 

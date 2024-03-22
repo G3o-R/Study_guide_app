@@ -7,3 +7,27 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+puts "------------------seeding"
+
+g3or = User.create!({
+    username: 'G3o-R',
+    password_digest: BCrypt::Password.create('P4ssw0rd!'), 
+    email: 'fakeemail@gmail.com',
+  })
+
+  g3or.folders.create!([
+    {
+        subject_name: "Math",
+        color: "red"
+    },
+    {
+        subject_name: "ELA",
+        color: "blue"
+    },
+    {
+        subject_name: "Science",
+        color: "green"
+    }
+  ])
+
+puts "------------------ done seeding"

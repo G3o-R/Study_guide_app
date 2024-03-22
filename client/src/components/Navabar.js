@@ -53,6 +53,7 @@ export default function Navbar() {
           </NavLink>
           <NavLink
             to="/subjects"
+            isDisabled="true"
             className={location.pathname === "/subjects" ? "active" : ""}
           >
             Subjects
