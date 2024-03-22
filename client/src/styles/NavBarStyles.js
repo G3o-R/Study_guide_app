@@ -10,7 +10,7 @@ export const StyledNavBar = styled.div`
   background-color: #030416;
   color: white;
   width: 7rem;
-  z-index: 1;
+  z-index:10;
 `;
 
 export const NavLinks = styled.div`
@@ -89,4 +89,23 @@ export const MoreTab = styled.div`
     padding: 10px 0px 10px 15px
   }
 
+`;
+
+export const SubjectsTabContainer = styled.div`
+  position: absolute;
+  z-index:1;
+  .inactive{
+    display:none
+    }
+`;
+
+export const ShowSubjectsTab = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 350px;
+  background-color: blue;
+  padding-left: 7rem;
+  position: absolute;
+  z-index: ${(props) => (props.className === "inactive" ? "-1" : "10")};
 `;

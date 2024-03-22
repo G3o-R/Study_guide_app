@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { logOutUser } from "../redux/features/userSlice";
@@ -11,25 +9,25 @@ import {
   LogoutButton,
   AppName,
   MoreContainer,
-  MoreTab
+  MoreTab,
+  SubjectsTabContainer,
+  ShowSubjectsTab
 } from "../styles/NavBarStyles";
-// import { ReactComponent as HomeSVG } from "../images/Home.svg";
-// import { ReactComponent as Create } from "../images/Create.svg";
-// import { ReactComponent as More } from "../images/Settings.svg";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
-  const [showMore, SetShowMore] = useState(false);
+  // const [showMore, SetShowMore] = useState(false);
   const [showSubjects, setShowSubjects] = useState(false)
   const moreTabRef = useRef(null);
+  const subjectsTabRef = useRef(null)
 
   useEffect(() => {
     function handleOutsideClick(event) {
-      if (moreTabRef.current && !moreTabRef.current.contains(event.target)) {
-        SetShowMore(false);
+      if (subjectsTabRef.current && !subjectsTabRef.current.contains(event.target)) {
+        setShowSubjects(false);
       }
     }
 
@@ -47,7 +45,7 @@ export default function Navbar() {
 
   function handleSubjectClick(e){
     e.preventDefault()
-    setShowSubjects(!showSubjects)
+    setShowSubjects(true)
 
   }
 
@@ -59,9 +57,9 @@ export default function Navbar() {
             The Desk
           </NavLink>
           <NavLink
-            // to="/subjects"
-            // className={location.pathname === "/subjects" ? "active" : ""}
             onClick={handleSubjectClick}
+            className={showSubjects ? "active" : ""}
+            ref={subjectsTabRef}
           >
             Subjects
           </NavLink>
@@ -90,15 +88,12 @@ export default function Navbar() {
             Account
           </NavLink>
         </NavLinks>
-        <MoreContainer onClick={() => SetShowMore(!showMore)} ref={moreTabRef}>
-          {/* <More className="more-btn" /> More */}
-          <MoreTab className={showMore ? "active" : "inactive"} ref={moreTabRef}>
-            <LogoutButton onClick={handleLogOut} className="btns">
-              Log Out
-            </LogoutButton>
-          </MoreTab>
-        </MoreContainer>
       </StyledNavBar>
+      <SubjectsTabContainer>
+      <ShowSubjectsTab className={!showSubjects ? "inactive" : ""}>
+          {showSubjects && "Subjects Tab Content"}
+        </ShowSubjectsTab>
+      </SubjectsTabContainer>
     </>
   );
 }

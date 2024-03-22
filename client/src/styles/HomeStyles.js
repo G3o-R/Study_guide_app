@@ -4,7 +4,6 @@ export const HomePageStyles = styled.div`
 display: flex;
 justify-content:center;
 padding-left:7.5rem;
-
 `;
 
 export const HeaderContainer = styled.div`
