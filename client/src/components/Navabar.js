@@ -23,6 +23,7 @@ export default function Navbar() {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const [showMore, SetShowMore] = useState(false);
+  const [showSubjects, setShowSubjects] = useState(false)
   const moreTabRef = useRef(null);
 
   useEffect(() => {
@@ -44,24 +45,30 @@ export default function Navbar() {
     navigate("/login");
   }
 
+  function handleSubjectClick(e){
+    e.preventDefault()
+    setShowSubjects(!showSubjects)
+
+  }
+
   return (
     <>
       <StyledNavBar>
         <NavLinks>
-          <NavLink to="/" className={location.pathname === "/" ? "active" : ""}>
+          <NavLink to="/" className={location.pathname === "/" && !showSubjects ? "active" : ""}>
             The Desk
           </NavLink>
           <NavLink
-            to="/subjects"
-            isDisabled="true"
-            className={location.pathname === "/subjects" ? "active" : ""}
+            // to="/subjects"
+            // className={location.pathname === "/subjects" ? "active" : ""}
+            onClick={handleSubjectClick}
           >
             Subjects
           </NavLink>
           <NavLink
             to={`/messages`}
             className={
-              location.pathname === `/messages` ? "active" : ""
+              location.pathname === `/messages` && !showSubjects ? "active" : ""
             }
           >
             Messages
@@ -69,7 +76,7 @@ export default function Navbar() {
           <NavLink
             to={`/calendar`}
             className={
-              location.pathname === `/calendar` ? "active" : ""
+              location.pathname === `/calendar` && !showSubjects ? "active" : ""
             }
           >
             Calendar
@@ -77,7 +84,7 @@ export default function Navbar() {
           <NavLink
             to={`/account`}
             className={
-              location.pathname === `/account` ? "active" : ""
+              location.pathname === `/account` && !showSubjects ? "active" : ""
             }
           >
             Account
