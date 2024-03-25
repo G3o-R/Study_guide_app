@@ -104,8 +104,10 @@ export const ShowSubjectsTab = styled.div`
   justify-content: center;
   height: 100vh;
   width: 350px;
-  background-color: blue;
+  background-color: #ffffff;
   padding-left: 7rem;
-  position: absolute;
+  border: 1px solid #dfdfdf;
+  border-radius:4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   z-index: ${(props) => (props.className === "inactive" ? "-1" : "10")};
 `;

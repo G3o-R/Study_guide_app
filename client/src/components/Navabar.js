@@ -19,10 +19,10 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
-  // const [showMore, SetShowMore] = useState(false);
   const [showSubjects, setShowSubjects] = useState(false)
   const moreTabRef = useRef(null);
   const subjectsTabRef = useRef(null)
+  console.log(user)
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -45,9 +45,13 @@ export default function Navbar() {
 
   function handleSubjectClick(e){
     e.preventDefault()
-    setShowSubjects(true)
+    setShowSubjects(!showSubjects)
 
   }
+
+  const subjectsToDisplayInTab = user.folders.map((folder)=>(
+    <li>{folder.subject_name}</li>
+  ))
 
   return (
     <>
@@ -90,8 +94,10 @@ export default function Navbar() {
         </NavLinks>
       </StyledNavBar>
       <SubjectsTabContainer>
-      <ShowSubjectsTab className={!showSubjects ? "inactive" : ""}>
-          {showSubjects && "Subjects Tab Content"}
+      <ShowSubjectsTab className={!showSubjects ? "inactive" : ""} ref={subjectsTabRef}>
+        <ul>
+          {subjectsToDisplayInTab}
+        </ul>
         </ShowSubjectsTab>
       </SubjectsTabContainer>
     </>
