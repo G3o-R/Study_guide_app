@@ -22,7 +22,7 @@ export default function Navbar() {
   const [showSubjects, setShowSubjects] = useState(false)
   const moreTabRef = useRef(null);
   const subjectsTabRef = useRef(null)
-  console.log(user)
+  // console.log(user)
 
   useEffect(() => {
     function handleOutsideClick(event) {

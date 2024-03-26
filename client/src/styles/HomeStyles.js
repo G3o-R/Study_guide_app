@@ -16,3 +16,10 @@ export const Header = styled.h1`
     /* text-decoration: underline; */
 
 `;
+
+export const FoldersDisplayContainer = styled.div`
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    padding: 70px;
+`;
