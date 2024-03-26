@@ -14,6 +14,13 @@ export const HeaderContainer = styled.div`
 
 export const Header = styled.h1`
     /* text-decoration: underline; */
+    &::after{
+        content: "";
+    display: block; /* This will create a line break */
+    width: 100%;
+    height: auto;
+    color: red; /* Adjust the color as needed */
+    }
 
 `;
 

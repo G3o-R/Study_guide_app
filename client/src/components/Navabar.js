@@ -11,7 +11,8 @@ import {
   MoreContainer,
   MoreTab,
   SubjectsTabContainer,
-  ShowSubjectsTab
+  ShowSubjectsTab,
+  SubjectsList
 } from "../styles/NavBarStyles";
 
 export default function Navbar() {
@@ -93,11 +94,16 @@ export default function Navbar() {
           </NavLink>
         </NavLinks>
       </StyledNavBar>
-      <SubjectsTabContainer>
-      <ShowSubjectsTab className={!showSubjects ? "inactive" : ""} ref={subjectsTabRef}>
-        <ul>
+      {/* I'll worry about styling the SubjectsTab later */}
+      <SubjectsTabContainer ref={subjectsTabRef}>
+      <ShowSubjectsTab className={!showSubjects ? "inactive" : ""}>
+        <h4>Subjects</h4>
+
+        <h5 onClick={(e)=> navigate("/subjects")}>All Folders</h5>
+
+        <SubjectsList>
           {subjectsToDisplayInTab}
-        </ul>
+        </SubjectsList>
         </ShowSubjectsTab>
       </SubjectsTabContainer>
     </>

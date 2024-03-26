@@ -100,8 +100,6 @@ export const SubjectsTabContainer = styled.div`
 `;
 
 export const ShowSubjectsTab = styled.div`
-  display: flex;
-  justify-content: center;
   height: 100vh;
   width: 350px;
   background-color: #ffffff;
@@ -110,4 +108,19 @@ export const ShowSubjectsTab = styled.div`
   border-radius:4px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
   z-index: ${(props) => (props.className === "inactive" ? "-1" : "10")};
+
+  h5{
+    cursor: pointer;
+    color: grey;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+`;
+
+export const SubjectsList = styled.ul`
+list-style-type: none;
+display: contents;
+justify-content: start;
+  
 `;

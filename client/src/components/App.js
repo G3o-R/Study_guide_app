@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
+import Subjects from '../pages/Subjects';
 import Navbar from './Navabar';
 
 import { useEffect } from 'react';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/login" element={<Navigate to="/" />} />
           <Route path="/sign-up" element={<Navigate to="/" />} />
           <Route path="/" element={<Home/>} />
+          <Route path="/subjects" element={<Subjects/>} />
         </Routes>
       </BrowserRouter>
       

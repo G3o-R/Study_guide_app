@@ -17,7 +17,7 @@ export default function Home(){
         <HomePageStyles>
             <HeaderContainer>
                 <Header>Your Desk</Header>
-                <hr/>
+                {/* <hr/> */}
                 <FoldersDisplayContainer>
 
                 {folders}
