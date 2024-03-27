@@ -96,7 +96,6 @@ export const SubjectsTabContainer = styled.div`
   justify-content: center;
   position: absolute;
   z-index:1;
-  /* width: 350px; */
   .inactive{
     display:none
     }
@@ -145,7 +144,6 @@ export const ShowSubjectsTab = styled.div`
 
 export const SubjectsList = styled.ul`
   list-style-type: none;
-  /* justify-content: start; */
   display:flex;
   flex-direction: column;
   gap: 10px;
@@ -155,6 +153,7 @@ export const SubjectsList = styled.ul`
     position: relative;
     width: fit-content;
     font-weight: 500;
+    cursor: pointer;
 
     &::before {
       content: "";
