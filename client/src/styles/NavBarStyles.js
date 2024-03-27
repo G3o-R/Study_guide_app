@@ -92,35 +92,94 @@ export const MoreTab = styled.div`
 `;
 
 export const SubjectsTabContainer = styled.div`
+  display: flex;
+  justify-content: center;
   position: absolute;
   z-index:1;
+  /* width: 350px; */
   .inactive{
     display:none
     }
 `;
 
 export const ShowSubjectsTab = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   height: 100vh;
   width: 350px;
+  padding: 20px;
   background-color: #ffffff;
   padding-left: 7rem;
   border: 1px solid #dfdfdf;
-  border-radius:4px;
+  border-radius: 4px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin: 0px 0px 15px 15px;
   z-index: ${(props) => (props.className === "inactive" ? "-1" : "10")};
 
-  h5{
+  h5 {
     cursor: pointer;
     color: grey;
-    &:hover{
-      text-decoration: underline;
+    position: relative;
+    width: fit-content;
+    margin-left:40px;
+
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    &:hover::before {
+      width: 100%;
     }
   }
 `;
 
 export const SubjectsList = styled.ul`
-list-style-type: none;
-display: contents;
-justify-content: start;
-  
+  list-style-type: none;
+  /* justify-content: start; */
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    text-align: left;
+    position: relative;
+    width: fit-content;
+    font-weight: 500;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: black;
+      transition: width 0.3s ease;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+`;
+
+export const LineBreak = styled.hr`
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #c7cdd1;
+    border-bottom: none;
 `;

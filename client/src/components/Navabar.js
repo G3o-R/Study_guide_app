@@ -12,7 +12,8 @@ import {
   MoreTab,
   SubjectsTabContainer,
   ShowSubjectsTab,
-  SubjectsList
+  SubjectsList,
+  LineBreak
 } from "../styles/NavBarStyles";
 
 export default function Navbar() {
@@ -98,9 +99,9 @@ export default function Navbar() {
       <SubjectsTabContainer ref={subjectsTabRef}>
       <ShowSubjectsTab className={!showSubjects ? "inactive" : ""}>
         <h4>Subjects</h4>
-
+        <LineBreak />
         <h5 onClick={(e)=> navigate("/subjects")}>All Folders</h5>
-
+        <LineBreak />
         <SubjectsList>
           {subjectsToDisplayInTab}
         </SubjectsList>
