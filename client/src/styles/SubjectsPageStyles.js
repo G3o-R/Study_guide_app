@@ -1,4 +1,50 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const spinAnimation = keyframes`
+    0% {
+        transform: rotate(0deg);
+        font-size: 24px;
+    }
+    100% {
+        transform: rotate(270deg);
+        font-size: 24px;
+    }
+`;
+
+const reverseSpinAnimation = keyframes`
+    0% {
+        transform: rotate(270deg);
+        font-size: 24px;
+    }
+    100% {
+        transform: rotate(0deg);
+        font-size: 24px;
+    }
+`;
+
+const rainbowEffect = keyframes`
+    0% {
+        color: red;
+    }
+    16% {
+        color: orange;
+    }
+    33% {
+        color: yellow;
+    }
+    50% {
+        color: green;
+    }
+    67% {
+        color: blue;
+    }
+    83% {
+        color: indigo;
+    }
+    100% {
+        color: violet;
+    }
+`;
 
 export const SubjectsPageStyles = styled.div`
     display: flex;
@@ -21,7 +67,6 @@ export const TableWrapper = styled.div`
     align-items: left;
     width: 100%;
     margin: 100px;
-    /* margin: 10px 10px 10px 10px; */
     
     table {
         width: 100%;
@@ -88,7 +133,15 @@ export const MoreBtn = styled.button`
     border: 1px solid #dfdfdf;
     border-radius: 50%;
     aspect-ratio: 1/1;
-    width:32px;
+    width: 40px;
     cursor: pointer;
-    font-size:24px;
+    font-size: 24px;
+    transition: transform 0.3s ease, font-size 0.3s ease, width 0.3s ease;
+    
+    &:hover {
+        animation: ${spinAnimation} 0.3s forwards, ${rainbowEffect} 6s infinite;
+    }
+    &:not(:hover) {
+        animation: ${reverseSpinAnimation} 0.3s forwards;
+    }
 `;
