@@ -53,44 +53,6 @@ export const AppName = styled.div`
   margin-bottom: 10px;
 `;
 
-export const MoreContainer = styled.div`
-  position: relative;
-  display:flex;
-  flex-direction: row;
-  padding-bottom: 3rem;
-  gap: 5px;
-  align-items: center;
-  cursor: pointer;
-
-  .inactive{
-    display:none;
-  }
-
-  `;
-
-export const MoreTab = styled.div`
-  transition: display 0.3s ease;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  width: 240px;
-  position:absolute;
-  height: auto;
-  justify-content: flex-start;
-  background-color: rgba(12,94,152,255);
-  border: 1px solid #333;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom:8rem;
-  bottom:0;
-  left:0;
-  margin-left: 30px;
-
-  .btns{
-    padding: 10px 0px 10px 15px
-  }
-
-`;
-
 export const SubjectsTabContainer = styled.div`
   display: flex;
   justify-content: center;

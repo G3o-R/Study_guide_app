@@ -121,15 +121,16 @@ export const TableWrapper = styled.div`
     }
 `;
 
-export const MoreBtnWrapper = styled.div`
+export const OptionsBtnWrapper = styled.div`
 position: absolute;
+z-index: 1000;
 bottom: 0;
 right: 0;
 padding: 70px;
 
 `;
 
-export const MoreBtn = styled.button`
+export const OptionsBtn = styled.button`
     border: 1px solid #dfdfdf;
     border-radius: 50%;
     aspect-ratio: 1/1;
@@ -145,3 +146,17 @@ export const MoreBtn = styled.button`
         animation: ${reverseSpinAnimation} 0.3s forwards;
     }
 `;
+
+export const OptionsWrapper = styled.div`
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    padding: 120px;
+
+    &.inactive{
+    display:none
+    }
+
+`;
+
+// export const 

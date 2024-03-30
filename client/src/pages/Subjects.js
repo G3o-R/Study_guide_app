@@ -1,17 +1,20 @@
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import FileFolder from "../components/FileFolder"
 import { 
    SubjectsPageStyles,
    HeaderContainer,
    FoldersHeader,
    TableWrapper,
-   MoreBtnWrapper,
-   MoreBtn
+   OptionsBtnWrapper,
+   OptionsBtn,
+   OptionsWrapper
 } from "../styles/SubjectsPageStyles"
 
 export default function Subjects(){
     const {user} = useSelector((state) => state.user)
+    const [ showMore, setShowMore ] = useState(false)
     const navigate = useNavigate()
     const folders = user.folders.map((folder) => (
         <FileFolder subject={folder} />
@@ -47,9 +50,12 @@ export default function Subjects(){
                 </tbody>
             </table>
             </TableWrapper>
-            <MoreBtnWrapper>
-                <MoreBtn onClick={()=>console.log("clicked")}> + </MoreBtn>
-            </MoreBtnWrapper>
+            <OptionsBtnWrapper>
+                <OptionsBtn onClick={()=>setShowMore(!showMore)}> + </OptionsBtn>
+            </OptionsBtnWrapper>
+            <OptionsWrapper className={showMore ? "active" : "inactive"}>
+
+            </OptionsWrapper>
         </SubjectsPageStyles>
     )
 }
