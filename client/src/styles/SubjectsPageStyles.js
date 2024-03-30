@@ -4,6 +4,7 @@ export const SubjectsPageStyles = styled.div`
     display: flex;
     flex-direction: column;
     padding-left: 7.5rem;
+    margin: 0px 20px 0px 10px;
 `;
 
 export const HeaderContainer = styled.div`
@@ -20,6 +21,7 @@ export const TableWrapper = styled.div`
     align-items: left;
     width: 100%;
     margin: 100px;
+    /* margin: 10px 10px 10px 10px; */
     
     table {
         width: 100%;
@@ -60,15 +62,33 @@ export const TableWrapper = styled.div`
             tr {
                 border-bottom: 1px solid lightgray;
                 transition: background-color 0.3s ease;
+                height: 20px;
 
                 &:hover {
                     background-color: #F5F5F5;
                 }
 
                 td {
-                    padding: 8px;
+                    padding: 16px;
                 }
             }
         }
     }
+`;
+
+export const MoreBtnWrapper = styled.div`
+position: absolute;
+bottom: 0;
+right: 0;
+padding: 70px;
+
+`;
+
+export const MoreBtn = styled.button`
+    border: 1px solid #dfdfdf;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width:32px;
+    cursor: pointer;
+    font-size:24px;
 `;

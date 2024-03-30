@@ -5,7 +5,9 @@ import {
    SubjectsPageStyles,
    HeaderContainer,
    FoldersHeader,
-   TableWrapper
+   TableWrapper,
+   MoreBtnWrapper,
+   MoreBtn
 } from "../styles/SubjectsPageStyles"
 
 export default function Subjects(){
@@ -45,6 +47,9 @@ export default function Subjects(){
                 </tbody>
             </table>
             </TableWrapper>
+            <MoreBtnWrapper>
+                <MoreBtn onClick={()=>console.log("clicked")}> + </MoreBtn>
+            </MoreBtnWrapper>
         </SubjectsPageStyles>
     )
 }
