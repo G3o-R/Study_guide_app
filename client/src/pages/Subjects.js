@@ -11,6 +11,7 @@ import {
    OptionsWrapper,
    OptionsContainer
 } from "../styles/SubjectsPageStyles"
+import CreateFolder from "../components/CreateFolder"
 
 export default function Subjects(){
     const {user} = useSelector((state) => state.user)
