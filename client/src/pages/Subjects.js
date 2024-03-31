@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import FileFolder from "../components/FileFolder"
+import { useEffect, useState } from "react"
 import { 
    SubjectsPageStyles,
    HeaderContainer,
@@ -15,12 +14,15 @@ import {
 
 export default function Subjects(){
     const {user} = useSelector((state) => state.user)
-    const [ showMore, setShowMore ] = useState(false)
+    const [ showOptions, setShowOptions ] = useState(false)
     const [ optionToDisplay, setOptionToDisplay] = useState("")
     const navigate = useNavigate()
-    const folders = user.folders.map((folder) => (
-        <FileFolder subject={folder} />
-    ))
+
+    useEffect(() => {
+        function handleOutsideClick(event) {
+            // if 
+        }
+    },[])
 
     function handleOptionToDisplay(e){
         setOptionToDisplay(e.target.className)
@@ -58,12 +60,16 @@ export default function Subjects(){
             </table>
             </TableWrapper>
             <OptionsBtnWrapper>
-                <OptionsBtn onClick={()=>setShowMore(!showMore)}> + </OptionsBtn>
+                <OptionsBtn onClick={()=>setShowOptions(!showOptions)}> + </OptionsBtn>
             </OptionsBtnWrapper>
-            <OptionsWrapper className={showMore ? "active" : "inactive"}>
+            <OptionsWrapper className={showOptions ? "active" : "inactive"}>
                 <OptionsContainer>
                     <option className="delete" onClick={handleOptionToDisplay}>Delete</option>
                     <option className="add" onClick={handleOptionToDisplay}>Add A Folder</option>
+                    {/* the idea is that after clicking on delete/add the OptionsContainer
+                    will transition into some sort of UI for that specific function and look really cool
+                    but rn I just want to be able to post a folder and then be able to add PDF files to those folders so
+                    this'll have to be on pause for now */}
                 </OptionsContainer>
             </OptionsWrapper>
         </SubjectsPageStyles>
