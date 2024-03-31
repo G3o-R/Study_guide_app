@@ -22,9 +22,7 @@ export default function Navbar() {
   const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const [showSubjects, setShowSubjects] = useState(false)
-  const moreTabRef = useRef(null);
   const subjectsTabRef = useRef(null)
-  // console.log(user)
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -52,7 +50,7 @@ export default function Navbar() {
   }
 
   const subjectsToDisplayInTab = user.folders.map((folder)=>(
-    <li onClick={()=>navigate(`/subjects/${folder.subject_name}`)}>{folder.subject_name}</li>
+    <li key={folder.subject_name} onClick={()=>navigate(`/subjects/${folder.subject_name}`)}>{folder.subject_name}</li>
   ))
 
   return (
@@ -64,8 +62,12 @@ export default function Navbar() {
           </NavLink>
           <NavLink
             onClick={handleSubjectClick}
-            className={showSubjects ? "active" : ""}
             ref={subjectsTabRef}
+            className={showSubjects ? "active" : ""}
+            // clicking on the Subjects tab after showSubjects is true
+            // will set showSubjects to false but then for some reason go from false immediately back to true?
+            // I think this is because subjectsTabRef is being triggered depspite having a reference on 
+            // the button. I don't know how to fix the bug just yet though
           >
             Subjects
           </NavLink>

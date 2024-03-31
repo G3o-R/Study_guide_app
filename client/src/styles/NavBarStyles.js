@@ -75,7 +75,7 @@ export const ShowSubjectsTab = styled.div`
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-  margin: 0px 0px 15px 15px;
+  margin: 0px 0px 0px 15px;
   z-index: ${(props) => (props.className === "inactive" ? "-1" : "10")};
 
   h5 {

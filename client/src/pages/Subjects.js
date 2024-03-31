@@ -9,7 +9,8 @@ import {
    TableWrapper,
    OptionsBtnWrapper,
    OptionsBtn,
-   OptionsWrapper
+   OptionsWrapper,
+   OptionsContainer
 } from "../styles/SubjectsPageStyles"
 
 export default function Subjects(){
@@ -21,7 +22,7 @@ export default function Subjects(){
     ))
 
     const subjects = user.folders.map((folder) => (
-        <tr className="subject-list-table-row">
+        <tr className="subject-list-table-row" key={folder.subject_name}>
             <td className="subject-name" onClick={()=>navigate(`${folder.subject_name}`)}>{folder.subject_name}</td>
             <td>01/01/2024</td>
             <td>01/01/20204 16:00</td>
@@ -54,7 +55,10 @@ export default function Subjects(){
                 <OptionsBtn onClick={()=>setShowMore(!showMore)}> + </OptionsBtn>
             </OptionsBtnWrapper>
             <OptionsWrapper className={showMore ? "active" : "inactive"}>
-
+                <OptionsContainer>
+                    <option className="delete" onClick={()=>console.log("delete")}>Delete</option>
+                    <option className="add" onClick={()=>console.log("Add a folder")}>Add A Folder</option>
+                </OptionsContainer>
             </OptionsWrapper>
         </SubjectsPageStyles>
     )
