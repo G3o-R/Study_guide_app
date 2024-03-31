@@ -126,7 +126,7 @@ position: absolute;
 z-index: 1000;
 bottom: 0;
 right: 0;
-padding: 70px;
+margin: 70px;
 
 `;
 
@@ -151,7 +151,7 @@ export const OptionsWrapper = styled.div`
     position:absolute;
     bottom: 0;
     right: 0;
-    padding: 120px;
+    margin: 80px;
 
     &.inactive{
     display:none
@@ -163,12 +163,21 @@ export const OptionsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    gap: 5px;
-    border: 1px solid lightgrey;
+    /* gap: 5px; */
+    /* border: 1px solid lightgrey; */
     padding: 30px;
 
     option{
         cursor: pointer;
+        font-size: 20px;
+        &.delete{
+            border: 1px solid lightgrey;
+            border-radius: 8px 8px 0px 0px
+        }
+        &.add{
+            border: 1px solid lightgrey;
+            border-radius: 0px 0px 0px 8px
+        }
         
     }
 `;

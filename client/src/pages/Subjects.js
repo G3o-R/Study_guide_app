@@ -16,10 +16,16 @@ import {
 export default function Subjects(){
     const {user} = useSelector((state) => state.user)
     const [ showMore, setShowMore ] = useState(false)
+    const [ optionToDisplay, setOptionToDisplay] = useState("")
     const navigate = useNavigate()
     const folders = user.folders.map((folder) => (
         <FileFolder subject={folder} />
     ))
+
+    function handleOptionToDisplay(e){
+        setOptionToDisplay(e.target.className)
+        console.log(optionToDisplay)
+    }
 
     const subjects = user.folders.map((folder) => (
         <tr className="subject-list-table-row" key={folder.subject_name}>
@@ -56,8 +62,8 @@ export default function Subjects(){
             </OptionsBtnWrapper>
             <OptionsWrapper className={showMore ? "active" : "inactive"}>
                 <OptionsContainer>
-                    <option className="delete" onClick={()=>console.log("delete")}>Delete</option>
-                    <option className="add" onClick={()=>console.log("Add a folder")}>Add A Folder</option>
+                    <option className="delete" onClick={handleOptionToDisplay}>Delete</option>
+                    <option className="add" onClick={handleOptionToDisplay}>Add A Folder</option>
                 </OptionsContainer>
             </OptionsWrapper>
         </SubjectsPageStyles>
