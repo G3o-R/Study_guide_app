@@ -19,15 +19,8 @@ export default function Subjects(){
     const [ optionToDisplay, setOptionToDisplay] = useState("")
     const navigate = useNavigate()
 
-    useEffect(() => {
-        function handleOutsideClick(event) {
-            // if 
-        }
-    },[])
-
     function handleOptionToDisplay(e){
         setOptionToDisplay(e.target.className)
-        console.log(optionToDisplay)
     }
 
     const subjects = user.folders.map((folder) => (
@@ -60,6 +53,7 @@ export default function Subjects(){
                 </tbody>
             </table>
             </TableWrapper>
+            <CreateFolder interaction={optionToDisplay}/>
             <OptionsBtnWrapper>
                 <OptionsBtn onClick={()=>setShowOptions(!showOptions)}> + </OptionsBtn>
             </OptionsBtnWrapper>

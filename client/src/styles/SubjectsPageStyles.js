@@ -163,8 +163,6 @@ export const OptionsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    /* gap: 5px; */
-    /* border: 1px solid lightgrey; */
     padding: 30px;
 
     option{
