@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 // handles signing up
 export const signUpUser = createAsyncThunk("user/signUpUser", async (signUpData, thunkAPI) => {
     try {
