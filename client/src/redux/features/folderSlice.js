@@ -48,3 +48,5 @@ const folderSlice = createSlice({
         })
     }
 })
+
+export default folderSlice.reducer
