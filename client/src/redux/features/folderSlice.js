@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { addFolderToUser } from "./userSlice";
 
 export const createFolder = createAsyncThunk("folder/createFolder", async (folderObjData, thunkAPI) => {
     try {
@@ -14,7 +15,7 @@ export const createFolder = createAsyncThunk("folder/createFolder", async (folde
             const errorMessage = await response.json()
             return thunkAPI.rejectWithValue(errorMessage.errors)
         }
-
+        thunkAPI.dispatch(addFolderToUser(folderObjData))
         return response.json()
 
     } catch(errors) { 
@@ -39,7 +40,7 @@ const folderSlice = createSlice({
         })
         .addCase(createFolder.fulfilled, (state, action) => {
             state.loading = false;
-            state.folders = [...state.posts, action.payload];
+            state.folders = [...state.folders, action.payload];
             state.errors = [];
         })
         .addCase(createFolder.rejected, (state, action) => {

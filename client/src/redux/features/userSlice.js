@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 // handles signing up
 export const signUpUser = createAsyncThunk("user/signUpUser", async (signUpData, thunkAPI) => {
     try {
@@ -58,6 +58,9 @@ export const getMe = createAsyncThunk("user/getMe", async (thunkAPI) => {
     }
 })
 
+export const addFolderToUser = createAction("folder/addFolderToUser")
+
+
 const userSlice = createSlice({
     name: "user",
     initialState: {
@@ -113,6 +116,11 @@ const userSlice = createSlice({
             state.user = null;
             state.errors = action.payload;
         })
+        // adds folder to user
+        .addCase(addFolderToUser, (state, action) => {
+            state.user.folders = [...state.user.folders, action.payload]
+        })
+
     }
 })
 
