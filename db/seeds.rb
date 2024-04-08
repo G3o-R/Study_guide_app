@@ -30,4 +30,8 @@ g3or = User.create!({
     }
   ])
 
+  g3or = User.find_by(username: 'G3o-R')
+puts g3or.folders.pluck(:subject_name, :color, :serial_number)
+
+
 puts "------------------ done seeding"

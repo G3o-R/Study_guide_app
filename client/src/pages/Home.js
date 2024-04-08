@@ -9,6 +9,7 @@ import FileFolder from "../components/FileFolder"
 
 export default function Home(){
     const { user } = useSelector((state) => state.user)
+    console.log(user)
     const folders = user.folders.map((folder) => (
         <FileFolder subject={folder} />
     ))
@@ -17,7 +18,6 @@ export default function Home(){
         <HomePageStyles>
             <HeaderContainer>
                 <Header>Your Desk</Header>
-                {/* <hr/> */}
                 <FoldersDisplayContainer>
 
                 {folders}
