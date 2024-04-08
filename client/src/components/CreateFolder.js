@@ -23,7 +23,6 @@ export default function CreateFolder({interaction}){
         dispatch(createFolder(folderObj))
         console.log(folderObj)
     }
-    console.log(errors)
 
     function handleChange(e){
         let value = e.target.value;

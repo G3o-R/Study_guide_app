@@ -11,7 +11,7 @@ export default function Home(){
     const { user } = useSelector((state) => state.user)
     console.log(user)
     const folders = user.folders.map((folder) => (
-        <FileFolder subject={folder} />
+        <FileFolder key={folder.serial_number} subject={folder} />
     ))
 
     return(
