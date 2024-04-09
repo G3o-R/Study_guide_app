@@ -41,7 +41,8 @@ function App() {
           <Route path="/login" element={<Navigate to="/" />} />
           <Route path="/sign-up" element={<Navigate to="/" />} />
           <Route path="/" element={<Home/>} />
-          <Route path="/subjects" element={<Subjects/>}>
+          <Route path="/subjects" >
+            <Route index={true} element={<Subjects/>} />
             <Route path=":serialNumber" element={<SubjectContentPage />} />
           </Route>
         </Routes>
