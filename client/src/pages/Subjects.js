@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { 
    SubjectsPageStyles,
    HeaderContainer,
@@ -23,11 +23,15 @@ export default function Subjects(){
         setOptionToDisplay(e.target.className)
     }
 
+    function handleSubjectClick(serialNumber){
+        navigate(`/subjects/${serialNumber}`)
+    }
+
     const subjects = user.folders.map((folder) => (
         <tr className="subject-list-table-row" key={folder.subject_name}>
-            <td className="subject-name" onClick={()=>navigate(`${folder.subject_name}`)}>{folder.subject_name}</td>
+            <td className="subject-name" onClick={()=>handleSubjectClick(folder.serial_number)}>{folder.subject_name}</td>
             <td>01/01/2024</td>
-            <td>01/01/20204 16:00</td>
+            <td>01/01/2024 16:00</td>
             <td>false</td>
 
         </tr>
@@ -53,7 +57,8 @@ export default function Subjects(){
                 </tbody>
             </table>
             </TableWrapper>
-            <CreateFolder interaction={optionToDisplay}/>
+            {/* <CreateFolder interaction={optionToDisplay}/> */}
+            {optionToDisplay === "add" ? <CreateFolder /> : null }
             <OptionsBtnWrapper>
                 <OptionsBtn onClick={()=>setShowOptions(!showOptions)}> + </OptionsBtn>
             </OptionsBtnWrapper>

@@ -21,7 +21,6 @@ export default function CreateFolder({interaction}){
     function handleAddFormSubmit(e){
         e.preventDefault()
         dispatch(createFolder(folderObj))
-        console.log(folderObj)
     }
 
     function handleChange(e){

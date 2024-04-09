@@ -50,7 +50,7 @@ export default function Navbar() {
   }
 
   const subjectsToDisplayInTab = user.folders.map((folder)=>(
-    <li key={folder.subject_name} onClick={()=>navigate(`/subjects/${folder.subject_name}`)}>{folder.subject_name}</li>
+    <li key={folder.subject_name} onClick={()=>navigate(`/subjects/${folder.serial_number}`)}>{folder.subject_name}</li>
   ))
 
   return (

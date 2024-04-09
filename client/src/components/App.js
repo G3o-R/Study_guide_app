@@ -4,7 +4,9 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
 import Subjects from '../pages/Subjects';
+import SubjectContentPage from '../pages/SubjectContentPage';
 import Navbar from './Navabar';
+
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,7 +41,9 @@ function App() {
           <Route path="/login" element={<Navigate to="/" />} />
           <Route path="/sign-up" element={<Navigate to="/" />} />
           <Route path="/" element={<Home/>} />
-          <Route path="/subjects" element={<Subjects/>} />
+          <Route path="/subjects" element={<Subjects/>}>
+            <Route path=":serialNumber" element={<SubjectContentPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
       
