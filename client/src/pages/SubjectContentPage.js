@@ -1,15 +1,24 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { 
+  ContentPageStyles,
+  Header,
+  HeaderContainer
+ } from '../styles/SubjectContentPageStyles';
+import { useSelector } from "react-redux"
 
 export default function SubjectContentPage() {
   const { serialNumber } = useParams();
-  console.log(serialNumber)
-  console.log("test")
+  const { user } = useSelector((state) => state.user)
+
+  let folderToDisplay = user.folders.find((folder) => folder.serial_number === serialNumber)
+
 
   return (
-    <div className='test'>
-      <h2>Folder Details</h2>
-      <p>Serial Number: {serialNumber}</p>
-    </div>
+    <ContentPageStyles>
+      <HeaderContainer>
+        <Header> {folderToDisplay.subject_name} </Header>
+      </HeaderContainer>
+    </ContentPageStyles>
   );
 }
