@@ -1,21 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addFolderToUser } from "./userSlice";
+import { addSubjectToUser } from "./userSlice";
 
-export const createFolder = createAsyncThunk("folder/createFolder", async (folderObjData, thunkAPI) => {
+export const createSubject = createAsyncThunk("subject/createSubject", async (subjectObjData, thunkAPI) => {
     try {
-        const response = await fetch ("/folders", {
+        const response = await fetch ("/subjects", {
             method: "Post",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(folderObjData)
+            body: JSON.stringify(subjectObjData)
         })
 
         if (!response.ok){
             const errorMessage = await response.json()
             return thunkAPI.rejectWithValue(errorMessage.errors)
         }
-        thunkAPI.dispatch(addFolderToUser(folderObjData))
+        thunkAPI.dispatch(addSubjectToUser(subjectObjData))
         return response.json()
 
     } catch(errors) { 
@@ -23,31 +23,31 @@ export const createFolder = createAsyncThunk("folder/createFolder", async (folde
      }
 })
 
-const folderSlice = createSlice({
-    name: "folder",
+const subjectSlice = createSlice({
+    name: "subject",
     initialState: {
-        folders: [],
+        subjects: [],
         loading: false,
         errors: []
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
-        // creates folders
-        .addCase(createFolder.pending, (state) => {
+        // creates subjects
+        .addCase(createSubject.pending, (state) => {
             state.loading = true;
             state.errors = [];
         })
-        .addCase(createFolder.fulfilled, (state, action) => {
+        .addCase(createSubject.fulfilled, (state, action) => {
             state.loading = false;
-            state.folders = [...state.folders, action.payload];
+            state.subjects = [...state.subjects, action.payload];
             state.errors = [];
         })
-        .addCase(createFolder.rejected, (state, action) => {
+        .addCase(createSubject.rejected, (state, action) => {
             state.loading = false;
             state.errors = action.payload;
         })
     }
 })
 
-export default folderSlice.reducer
+export default subjectSlice.reducer

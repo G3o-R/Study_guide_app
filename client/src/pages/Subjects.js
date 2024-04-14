@@ -11,7 +11,7 @@ import {
    OptionsWrapper,
    OptionsContainer
 } from "../styles/SubjectsPageStyles"
-import CreateFolder from "../components/CreateFolder"
+import CreateSubject from "../components/CreateSubject"
 
 export default function Subjects(){
     const {user} = useSelector((state) => state.user)
@@ -27,9 +27,9 @@ export default function Subjects(){
         navigate(`/subjects/${serialNumber}`)
     }
 
-    const subjects = user.folders.map((folder) => (
-        <tr className="subject-list-table-row" key={folder.subject_name}>
-            <td className="subject-name" onClick={()=>handleSubjectClick(folder.serial_number)}>{folder.subject_name}</td>
+    const subjects = user.subjects.map((subject) => (
+        <tr className="subject-list-table-row" key={subject.subject_name}>
+            <td className="subject-name" onClick={()=>handleSubjectClick(subject.serial_number)}>{subject.subject_name}</td>
             <td>01/01/2024</td>
             <td>01/01/2024 16:00</td>
             <td>false</td>
@@ -58,7 +58,7 @@ export default function Subjects(){
             </table>
             </TableWrapper>
             {/* <CreateFolder interaction={optionToDisplay}/> */}
-            {optionToDisplay === "add" ? <CreateFolder /> : null }
+            {optionToDisplay === "add" ? <CreateSubject /> : null }
             <OptionsBtnWrapper>
                 <OptionsBtn onClick={()=>setShowOptions(!showOptions)}> + </OptionsBtn>
             </OptionsBtnWrapper>

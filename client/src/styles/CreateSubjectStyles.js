@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CreateFolderContainer = styled.div`
+export const CreateSubjectContainer = styled.div`
     display:none;
     z-index: 5;
     &.active{
@@ -8,7 +8,7 @@ export const CreateFolderContainer = styled.div`
     }
 `;
 
-export const AddFolderFormContainer = styled.div`
+export const AddSubjectFormContainer = styled.div`
     margin: 20px;
     padding:5px;
     border: 1px solid lightgray;
@@ -18,7 +18,7 @@ export const AddFolderFormContainer = styled.div`
     align-items: center;
 `;
 
-export const AddFolderForm = styled.form`
+export const AddSubjectForm = styled.form`
 
 input{
     border:none;

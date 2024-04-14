@@ -58,7 +58,7 @@ export const getMe = createAsyncThunk("user/getMe", async (thunkAPI) => {
     }
 })
 
-export const addFolderToUser = createAction("folder/addFolderToUser")
+export const addSubjectToUser = createAction("folder/addFolderToUser")
 
 
 const userSlice = createSlice({
@@ -117,8 +117,8 @@ const userSlice = createSlice({
             state.errors = action.payload;
         })
         // adds folder to user
-        .addCase(addFolderToUser, (state, action) => {
-            state.user.folders = [...state.user.folders, action.payload]
+        .addCase(addSubjectToUser, (state, action) => {
+            state.user.subjects = [...state.user.subjects, action.payload]
         })
 
     }

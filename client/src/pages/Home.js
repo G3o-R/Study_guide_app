@@ -9,9 +9,8 @@ import FileFolder from "../components/FileFolder"
 
 export default function Home(){
     const { user } = useSelector((state) => state.user)
-    console.log(user)
-    const folders = user.folders.map((folder) => (
-        <FileFolder key={folder.serial_number} subject={folder} />
+    const subjects = user.subjects.map((subject) => (
+        <FileFolder key={subject.serial_number} subject={subject} />
     ))
 
     return(
@@ -20,7 +19,7 @@ export default function Home(){
                 <Header>Your Desk</Header>
                 <FoldersDisplayContainer>
 
-                {folders}
+                {subjects}
                 </FoldersDisplayContainer>
             </HeaderContainer>
 
