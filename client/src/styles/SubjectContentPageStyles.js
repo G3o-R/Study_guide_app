@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { 
+    OptionsBtnWrapper,
+    OptionsBtn,
+    OptionsWrapper
+ } from "./SubjectsPageStyles";
 
 export const ContentPageStyles = styled.div`
     display: flex;
@@ -17,3 +22,21 @@ export const Header = styled.h1`
     font-weight: 500;
 `;
 
+export const SubjectsOptionsWrapper = styled(OptionsBtnWrapper)`
+
+`;
+
+export const SubjectOptionsBtn = styled(OptionsBtn)`
+
+`;
+
+export const AddDocumentWrapper = styled(OptionsWrapper)`
+    width: 20rem;
+`;
+
+export const AddDocumentContainer = styled.div`
+    width: 20em;
+    aspect-ratio: 2/3;
+    background-color: #dfdfdf;
+    border-radius: 24px 24px 24px 24px;
+`;

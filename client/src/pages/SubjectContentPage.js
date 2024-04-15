@@ -1,14 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { 
+  AddDocumentContainer,
+  AddDocumentWrapper,
   ContentPageStyles,
   Header,
-  HeaderContainer
+  HeaderContainer,
+  SubjectOptionsBtn,
+  SubjectsOptionsWrapper
  } from '../styles/SubjectContentPageStyles';
 import { useSelector } from "react-redux"
 
 export default function SubjectContentPage() {
   const { serialNumber } = useParams();
+  const [ showOptions, setShowOptions ] = useState(false)
   const { user } = useSelector((state) => state.user)
 
   let subjectToDisplay = user.subjects.find((subject) => subject.serial_number === serialNumber)
@@ -19,6 +24,16 @@ export default function SubjectContentPage() {
       <HeaderContainer>
         <Header> {subjectToDisplay.subject_name} </Header>
       </HeaderContainer>
+
+      <SubjectsOptionsWrapper>
+        <SubjectOptionsBtn onClick={()=>setShowOptions(!showOptions)}> + </SubjectOptionsBtn>
+      </SubjectsOptionsWrapper>
+      <AddDocumentWrapper className={showOptions? "active" : "inactive"}>
+        <AddDocumentContainer>
+
+        </AddDocumentContainer>
+      </AddDocumentWrapper>
+
     </ContentPageStyles>
   );
 }
