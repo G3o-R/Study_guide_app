@@ -11,6 +11,8 @@ import {
  } from '../styles/SubjectContentPageStyles';
 import { useSelector } from "react-redux"
 
+import DragNDropFiles from '../components/DragNDropFiles';
+
 export default function SubjectContentPage() {
   const { serialNumber } = useParams();
   const [ showOptions, setShowOptions ] = useState(false)
@@ -30,7 +32,8 @@ export default function SubjectContentPage() {
       </SubjectsOptionsWrapper>
       <AddDocumentWrapper className={showOptions? "active" : "inactive"}>
         <AddDocumentContainer>
-
+          {/* DragNDropFiles here */}
+          <DragNDropFiles />
         </AddDocumentContainer>
       </AddDocumentWrapper>
 

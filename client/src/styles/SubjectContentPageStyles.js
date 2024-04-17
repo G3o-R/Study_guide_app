@@ -39,4 +39,15 @@ export const AddDocumentContainer = styled.div`
     aspect-ratio: 2/3;
     background-color: #dfdfdf;
     border-radius: 24px 24px 24px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
+
+export const FormContainer = styled.div`
+    background-color: #FFFFFF;
+    aspect-ratio: 1/1;
+    width: 80%;
+
 `;
