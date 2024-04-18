@@ -32,7 +32,6 @@ export default function SubjectContentPage() {
       </SubjectsOptionsWrapper>
       <AddDocumentWrapper className={showOptions? "active" : "inactive"}>
         <AddDocumentContainer>
-          {/* DragNDropFiles here */}
           <DragNDropFiles />
         </AddDocumentContainer>
       </AddDocumentWrapper>

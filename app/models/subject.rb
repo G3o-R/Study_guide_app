@@ -1,4 +1,4 @@
-class Folder < ApplicationRecord
+class Subject < ApplicationRecord
     belongs_to :user
     before_create :generate_serial_number
     
