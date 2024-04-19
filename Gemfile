@@ -11,6 +11,10 @@ gem "pg", "~> 1.1"
 #use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'poppler', '~> 3.0', '>= 3.0.7'
+
+gem 'cairo-gobject', '~> 3.5', '>= 3.5.1'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 6.0"
 

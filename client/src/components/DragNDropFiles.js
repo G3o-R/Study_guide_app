@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { addDocument } from '../redux/features/documentsSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function DragNDropFiles(){
     const [dragging, setDragging] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const dispatch = useDispatch()
   
     const handleDragEnter = (e) => {
       e.preventDefault();
@@ -28,14 +31,12 @@ export default function DragNDropFiles(){
   
       const files = [...e.dataTransfer.files];
       setSelectedFiles(files);
-      // Do something with the dropped files, like uploading or displaying
       console.log(files);
     };
   
     const handleFileInputChange = (e) => {
       const files = [...e.target.files];
       setSelectedFiles(files);
-      // Do something with the selected files
       console.log(files);
     };
   
@@ -46,13 +47,11 @@ export default function DragNDropFiles(){
           formData.append(`file${index}`, file);
         });
       
-        // Log each entry in the FormData object
-        for (let entry of formData.entries()) {
-          console.log(entry);
-        }
+        // for (let entry of formData.entries()) {
+        //   console.log(entry);
+        // }
       
-        // Send formData to the server
-        console.log(formData);
+        dispatch(addDocument(formData));
       };
   
     return (

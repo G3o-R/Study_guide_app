@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addDocument = createAsyncThunk("files/addFile", async (fileObj, thunkAPI) => {
     try { 
-        const response = await fetch ("/docs", {
+        const response = await fetch ("/documents", {
             method: "Post",
             headers: {
                 "Content-Type": "application/json",
