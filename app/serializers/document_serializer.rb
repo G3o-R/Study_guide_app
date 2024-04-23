@@ -1,4 +1,4 @@
 class DocumentSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :pdf_file
-  has_one :subject
+  belongs_to :subject
 end
