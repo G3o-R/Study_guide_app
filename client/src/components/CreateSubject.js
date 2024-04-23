@@ -10,7 +10,7 @@ import {
 
 export default function CreateFolder({interaction}){
     const dispatch = useDispatch()
-    const {errors} = useSelector((state) => state.folders)
+    // const {errors} = useSelector((state) => state.subjects)
     const [subjectObj, setSubjectObj] = useState({
         subject_name: "",
         color: "blue"

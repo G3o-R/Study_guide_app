@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addDocument = createAsyncThunk("files/addFile", async (fileObj, thunkAPI) => {
+    console.log(fileObj)
     try { 
         const response = await fetch ("/documents", {
             method: "Post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(fileObj)
+            // headers: {
+            //     "Content-Type": "application/json",
+            // },
+            body: (fileObj)
         })
 
         if (!response.ok){
@@ -45,7 +46,6 @@ const documentsSlice = createSlice({
         .addCase(addDocument.rejected, (state, action) => {
             state.loading = false;
             state.errors = action.payload;
-            // state.document = action.payload;
         })
     }
 })

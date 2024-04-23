@@ -32,7 +32,7 @@ export default function SubjectContentPage() {
       </SubjectsOptionsWrapper>
       <AddDocumentWrapper className={showOptions? "active" : "inactive"}>
         <AddDocumentContainer>
-          <DragNDropFiles />
+          <DragNDropFiles serialNumber={serialNumber}/>
         </AddDocumentContainer>
       </AddDocumentWrapper>
 
