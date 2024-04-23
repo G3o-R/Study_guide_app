@@ -1,5 +1,6 @@
 class Subject < ApplicationRecord
     belongs_to :user
+    has_many :documents
     before_create :generate_serial_number
     
 

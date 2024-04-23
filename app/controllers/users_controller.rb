@@ -6,11 +6,11 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         render json: user, status: :created
     end
-
+    
     def index 
         render json: User.all
     end
-
+    
     def showMe
         render json: @current_user
     end

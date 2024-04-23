@@ -10,28 +10,28 @@
 puts "------------------seeding"
 
 g3or = User.create!({
-    username: 'G3o-R',
-    password_digest: BCrypt::Password.create('P4ssw0rd!'), 
-    email: 'fakeemail@gmail.com',
+  username: 'G3o-R',
+  password_digest: BCrypt::Password.create('P4ssw0rd!'), 
+  email: 'fakeemail@gmail.com',
   })
-
+  
   g3or.subjects.create!([
     {
-        subject_name: "Math",
-        color: "red"
+      subject_name: "Math",
+      color: "red"
     },
     {
-        subject_name: "ELA",
-        color: "blue"
+      subject_name: "ELA",
+      color: "blue"
     },
     {
-        subject_name: "Science",
-        color: "green"
+      subject_name: "Science",
+      color: "green"
     }
-  ])
-
-  g3or = User.find_by(username: 'G3o-R')
-# puts g3or.folders.pluck(:subject_name, :color, :serial_number)
-
+    ])
+    
+    g3or = User.find_by(username: 'G3o-R')
+    # puts g3or.folders.pluck(:subject_name, :color, :serial_number)
+    
 
 puts "------------------ done seeding"
