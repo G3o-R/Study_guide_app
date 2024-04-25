@@ -2,7 +2,6 @@ class DocumentsController < ApplicationController
 
     def create
       subject = @current_user.subjects.find_by(serial_number: params[:serial_number])
-      # byebug
       if subject.nil?
         render json: { error: "Subject not found" }, status: :not_found
         return
@@ -11,6 +10,11 @@ class DocumentsController < ApplicationController
       new_doc = subject.documents.create!(doc_params)
 
       render json: new_doc, status: :created
+    end
+
+    def index 
+      all_documents = Document.all
+      render json: all_documents
     end
 
     private
