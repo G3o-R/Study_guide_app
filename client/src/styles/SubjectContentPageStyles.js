@@ -56,5 +56,6 @@ export const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-around
+    justify-content: flex-start;
+    gap: 5px;
 `;

@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-// import "react-pdf/dist/esm/Page/TextLayer.css";
+import styled from 'styled-components';
+
+// styles for thhe pdf container
+const PDFContainer = styled.div`
+    border: 1px solid #dfdfdf;
+`;
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.js',
@@ -17,10 +22,8 @@ export default function PDFasImage({document}){
         setNumPages(numPages)
     }
 
-    console.log(pdf_file.url)
-
     return (
-        <div>
+        <PDFContainer>
             <Document file={pdf_file.url} onLoadSucess={onDocumentSuccess}>
                 <Page
                  pageNumber={pageNumber} 
@@ -28,6 +31,6 @@ export default function PDFasImage({document}){
                  renderAnnotationLayer={false} 
                  width={300}></Page>
             </Document>
-        </div>
+        </PDFContainer>
     )
 }
