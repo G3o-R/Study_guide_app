@@ -37,7 +37,7 @@ export const AddDocumentWrapper = styled(OptionsWrapper)`
 export const AddDocumentContainer = styled.div`
     width: 20em;
     aspect-ratio: 2/3;
-    background-color: #dfdfdf;
+    background-color: #f9f9f9;
     border-radius: 24px 24px 24px 24px;
     display: flex;
     justify-content: center;

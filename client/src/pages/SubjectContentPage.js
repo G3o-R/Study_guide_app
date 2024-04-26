@@ -24,7 +24,7 @@ export default function SubjectContentPage() {
   let subject = user.subjects.find((subject) => subject.serial_number === serialNumber)
 
   const documentsToDisplay = subject.documents.map((document) => (
-    <PDFasImage document={document} />
+    <PDFasImage key={document.id} document={document} />
   ))
 
   return (

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { addDocument } from '../redux/features/documentsSlice';
 import { useDispatch } from 'react-redux';
+import { DragNDropForm, DropZoneContainer, SelectFileButton } from '../styles/DragNDropFiles';
 
 export default function DragNDropFiles({ serialNumber }) {
   const [dragging, setDragging] = useState(false);
@@ -10,6 +11,7 @@ export default function DragNDropFiles({ serialNumber }) {
     document: null
   });
 
+  const fileInputRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleDragEnter = (e) => {
@@ -38,15 +40,15 @@ export default function DragNDropFiles({ serialNumber }) {
     setFileObj({ ...fileObj, document: file });
   };
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFileObj({ ...fileObj, [name]: value });
-  // };
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    setFileObj({ ...fileObj, document: file });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', fileObj.name);
+    formData.append('name', fileObj.document.name);
     formData.append('description', fileObj.description);
     formData.append('pdf_file', fileObj.document);
     formData.append('serial_number', serialNumber);
@@ -54,26 +56,36 @@ export default function DragNDropFiles({ serialNumber }) {
     dispatch(addDocument(formData));
   };
 
+  const openFileDialog = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div
+    <DragNDropForm onSubmit={handleSubmit}>
+      <DropZoneContainer
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
-        style={{ border: `2px dashed ${dragging ? 'blue' : 'black'}`, padding: '20px', textAlign: 'center' }}
       >
-        <p>Drag & Drop PDF file here</p>
-      </div>
+        {fileObj.document ? (
+          <p>File selected: {fileObj.document.name}</p>
+        ) : (
+          <p>Drag & Drop PDF file here or</p>
+        )}
+        <SelectFileButton type="button" onClick={openFileDialog}>Select File</SelectFileButton>
+        <input 
+          type="file" 
+          ref={fileInputRef} 
+          style={{ display: 'none' }} 
+          onChange={handleFileInputChange} 
+        />
+      </DropZoneContainer>
       <div>
-        {/* <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" value={fileObj.name} onChange={handleInputChange} />
-
-        <label htmlFor="description">Description:</label>
-        <textarea id="description" name="description" value={fileObj.description} onChange={handleInputChange}></textarea> */}
-
         <button type="submit">Submit</button>
       </div>
-    </form>
+    </DragNDropForm>
   );
 };
