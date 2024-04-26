@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { 
   AddDocumentContainer,
   AddDocumentWrapper,
+  ContentContainer,
   ContentPageStyles,
   Header,
   HeaderContainer,
@@ -10,37 +11,30 @@ import {
   SubjectsOptionsWrapper
  } from '../styles/SubjectContentPageStyles';
 import { useSelector } from "react-redux"
-import { Document, Page } from 'react-pdf';
 
 
 import DragNDropFiles from '../components/DragNDropFiles';
+import PDFasImage from '../components/PDFasImage';
 
 export default function SubjectContentPage() {
   const { serialNumber } = useParams();
   const [ showOptions, setShowOptions ] = useState(false)
   const { user } = useSelector((state) => state.user)
 
-  let subjectToDisplay = user.subjects.find((subject) => subject.serial_number === serialNumber)
-  
-  // const documentsToDisplay = subjectToDisplay.documents.map((document) => (
-  //   <div key={document.id}>
-  //     <h3>{document.name}</h3>
-  //     <Document
-  //       file={document.description}
-  //       options={{ workerSrc: "/pdf.worker.js" }}
-  //     >
-  //       <Page pageNumber={1} />
-  //     </Document>
-  //   </div>
-  // ));
+  let subject = user.subjects.find((subject) => subject.serial_number === serialNumber)
 
+  const documentsToDisplay = subject.documents.map((document) => (
+    <PDFasImage document={document} />
+  ))
 
   return (
     <ContentPageStyles>
       <HeaderContainer>
-        <Header> {subjectToDisplay.subject_name} </Header>
+        <Header> {subject.subject_name} </Header>
       </HeaderContainer>
-      {/* {documentsToDisplay} */}
+      <ContentContainer>
+        {documentsToDisplay}
+      </ContentContainer>
 
       <SubjectsOptionsWrapper>
         <SubjectOptionsBtn onClick={()=>setShowOptions(!showOptions)}> + </SubjectOptionsBtn>

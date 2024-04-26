@@ -51,3 +51,10 @@ export const FormContainer = styled.div`
     width: 80%;
 
 `;
+
+export const ContentContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around
+`;
