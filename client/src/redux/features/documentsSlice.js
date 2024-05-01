@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { addDocumentToUser } from "./userSlice";
 
 export const addDocument = createAsyncThunk("files/addFile", async (fileObj, thunkAPI) => {
-    console.log(fileObj)
     try { 
         const response = await fetch ("/documents", {
             method: "Post",
@@ -12,8 +12,10 @@ export const addDocument = createAsyncThunk("files/addFile", async (fileObj, thu
             const errorMessage = await response.json()
             return thunkAPI.rejectWithValue(errorMessage.errors)
         }
-    
-        return response.json()
+        let newDocObj = await response.json()
+        console.log(newDocObj)
+        thunkAPI.dispatch(addDocumentToUser(newDocObj))
+        return newDocObj
 
     } catch(errors) {
         return thunkAPI.rejectWithValue("An error occurred while adding the documents")

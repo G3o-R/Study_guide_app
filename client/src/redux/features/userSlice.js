@@ -59,6 +59,7 @@ export const getMe = createAsyncThunk("user/getMe", async (thunkAPI) => {
 })
 
 export const addSubjectToUser = createAction("folder/addFolderToUser")
+export const addDocumentToUser = createAction("document/addDocumentToUser")
 
 
 const userSlice = createSlice({
@@ -119,6 +120,22 @@ const userSlice = createSlice({
         // adds folder to user
         .addCase(addSubjectToUser, (state, action) => {
             state.user.subjects = [...state.user.subjects, action.payload]
+        })
+        .addCase(addDocumentToUser, (state, action) => {
+            const { name, description, subject_id, pdf_file} = action.payload
+            // const subjectToAddTo = state.user.subjects.find((subject) => subject.id === subject_id)
+            // const updatedDocsArray = [...subjectToAddTo.documents, action.payload]
+            const updatedSubjectDocsArray = state.user.subjects.map((subject) => {
+                if (subject.id === subject_id){
+                    console.log(subject)
+                    const updatedDocsArray = [...subject.documents, action.payload]
+                    console.log(updatedDocsArray)
+                    subject.documents = updatedDocsArray
+                    return subject
+                } return subject
+            })
+            state.user.subjects = updatedSubjectDocsArray;
+            // debugger
         })
 
     }
