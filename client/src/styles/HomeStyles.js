@@ -8,12 +8,10 @@ padding-left:7.5rem;
 
 export const HeaderContainer = styled.div`
     width:95%;
-    /* display: flex; */
-    /* justify-content: flex-start; */
 `;
 
 export const Header = styled.h1`
-    /* text-decoration: underline; */
+    text-decoration: underline;
     &::after{
         content: "";
     display: block; /* This will create a line break */
@@ -27,6 +25,7 @@ export const Header = styled.h1`
 export const FoldersDisplayContainer = styled.div`
     display: flex;
     flex-direction:row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap:15px;
     padding: 70px;
 `;

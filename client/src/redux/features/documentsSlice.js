@@ -13,7 +13,6 @@ export const addDocument = createAsyncThunk("files/addFile", async (fileObj, thu
             return thunkAPI.rejectWithValue(errorMessage.errors)
         }
         let newDocObj = await response.json()
-        console.log(newDocObj)
         thunkAPI.dispatch(addDocumentToUser(newDocObj))
         return newDocObj
 

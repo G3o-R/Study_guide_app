@@ -5,12 +5,12 @@ import {
     FoldersDisplayContainer
 } from "../styles/HomeStyles"
 import { useSelector } from "react-redux"
-import FileFolder from "../components/FileFolder"
+import SubjectCard from "../components/SubjectCard"
 
 export default function Home(){
     const { user } = useSelector((state) => state.user)
     const subjects = user.subjects.map((subject) => (
-        <FileFolder key={subject.serial_number} subject={subject} />
+        <SubjectCard key={subject.serial_number} subject={subject} />
     ))
 
     return(

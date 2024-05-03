@@ -26,10 +26,10 @@ export default function PDFasImage({document}){
         <PDFContainer>
             <Document file={pdf_file.url} onLoadSucess={onDocumentSuccess}>
                 <Page
-                 pageNumber={pageNumber} 
+                 pageNumber={pageNumber}
                  renderTextLayer={false}
                  renderAnnotationLayer={false} 
-                 width={300}></Page>
+                 width={900}></Page>
             </Document>
         </PDFContainer>
     )
