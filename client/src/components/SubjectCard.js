@@ -11,8 +11,8 @@ import {
 export default function SubjectCard({subject}){
 
   return (
-    <SubjectCardContainer className={subject.color}>
-      <HeaderContainer>
+    <SubjectCardContainer>
+      <HeaderContainer className={subject.color}>
         <SubjectName>{subject.subject_name}</SubjectName>
       </HeaderContainer>
       <ShowContentContainer>
