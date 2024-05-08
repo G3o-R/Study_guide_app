@@ -22,6 +22,7 @@ export const SubjectName = styled.div`
   width: fit-content;
   height: fit-content;
   padding: 0px 10px 0px 10px;
+  cursor: pointer;
 `;
 
 export const ShowContentContainer = styled.div`

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 // styles for thhe pdf container
 const PDFContainer = styled.div`
     border: 1px solid #dfdfdf;
+    cursor: pointer;
 `;
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -12,7 +13,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     import.meta.url,
   ).toString();
 
-export default function PDFasImage({document}){
+export default function PDFasImage({document, handlePDFSelect, isLarge}){
     const {pdf_file} = document
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
@@ -22,14 +23,18 @@ export default function PDFasImage({document}){
         setNumPages(numPages)
     }
 
+    console.log(window.innerWidth)
+    
+
+
     return (
-        <PDFContainer>
+        <PDFContainer onClick={isLarge? null : ()=>handlePDFSelect(document)}>
             <Document file={pdf_file.url} onLoadSucess={onDocumentSuccess}>
                 <Page
                  pageNumber={pageNumber}
                  renderTextLayer={false}
                  renderAnnotationLayer={false} 
-                 width={900}></Page>
+                 width={500}></Page>
             </Document>
         </PDFContainer>
     )

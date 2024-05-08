@@ -6,14 +6,16 @@ import {
   ShowContentContainer,
   ShowContentButton
 } from "../styles/SubjectCardStyles"
+import { useNavigate } from 'react-router-dom';
 
 
 export default function SubjectCard({subject}){
+  const navigate = useNavigate()
 
   return (
     <SubjectCardContainer>
       <HeaderContainer className={subject.color}>
-        <SubjectName>{subject.subject_name}</SubjectName>
+        <SubjectName onClick={()=>navigate(`/subjects/${subject.serial_number}`)}>{subject.subject_name}</SubjectName>
       </HeaderContainer>
       <ShowContentContainer>
         <ShowContentButton>
