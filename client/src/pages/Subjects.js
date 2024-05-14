@@ -27,6 +27,8 @@ export default function Subjects(){
         navigate(`/subjects/${serialNumber}`)
     }
 
+    console.log(user.subjects)
+
     const subjects = user.subjects.map((subject) => (
         <tr className="subject-list-table-row" key={subject.subject_name}>
             <td className="subject-name" onClick={()=>handleSubjectClick(subject.serial_number)}>{subject.subject_name}</td>

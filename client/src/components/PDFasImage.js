@@ -8,10 +8,8 @@ const PDFContainer = styled.div`
     cursor: pointer;
 `;
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url,
-  ).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
+
 
 export default function PDFasImage({document, handlePDFSelect, isLarge}){
     const {pdf_file} = document
@@ -22,10 +20,6 @@ export default function PDFasImage({document, handlePDFSelect, isLarge}){
     function onDocumentSuccess({numPages}){
         setNumPages(numPages)
     }
-
-    console.log(window.innerWidth)
-    
-
 
     return (
         <PDFContainer onClick={isLarge? null : ()=>handlePDFSelect(document)}>
