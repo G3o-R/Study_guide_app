@@ -18,7 +18,6 @@ export default function Home(){
             <HeaderContainer>
                 <Header>Your Desk</Header>
                 <FoldersDisplayContainer>
-
                 {subjects}
                 </FoldersDisplayContainer>
             </HeaderContainer>
