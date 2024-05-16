@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
@@ -16,51 +16,68 @@ const PDFContainer = styled.div`
     cursor: pointer;
 `;
 
-export default function PDFasImage({document, handlePDFSelect, isLarge}) {
-  const {pdf_file} = document
+function highlightPattern(text, pattern) {
+  return text.replace(new RegExp(pattern, 'gi'), (match) => `<mark>${match}</mark>`);
+}
+
+export default function PDFasImage({ document, handlePDFSelect, isLarge }) {
+  const { pdf_file } = document;
   const [numPages, setNumPages] = useState(null);
+  // const [searchText, setSearchText] = useState('');
+  const [highLightedText, setHighLightedText] = useState("")
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }) {
     setNumPages(nextNumPages);
   }
 
-//   I'll handle rendering the width of the page letter
-//   but my idea od doing so would be using a useEffect to get the width of the screen
-//   and dividing that by some given number (I don't feel like thinking har rn)
-//   and that would set the state of a variable like width so that the width of the pdf is responsive
-//   to the size of the screen. I figured I'd go this route because setting the width using css seems to be messing things up so I figured I'd go easy on myself
-//   also I can't use use { useResizeObserver } from '@wojtekmaj/react-hooks'; for some reason
-
-const [width, setWidth] = useState(window.innerWidth)
-
-function handleResize(){
-  setWidth(window.innerWidth)
-}
-
-  useEffect(()=>{
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
+  const customTextRenderer = useCallback((textItem) => {
+    if (highLightedText.trim() !== '') {
+      return highlightPattern(textItem.str, highLightedText);
     }
-  },[])
+    return textItem.str;
+  }, [highLightedText]);
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleResize() {
+    setWidth(window.innerWidth);
+  }
 
   console.log(width)
 
 
+  const handleHighlight = useCallback(() => {
+    const selection = window.getSelection();
+    if (selection && selection.toString()) {
+      const selectedText = selection.toString();
+      setHighLightedText(selectedText);
+    }
+  }, []);
+
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <PDFContainer onClick={isLarge ? null : () => handlePDFSelect(document)} className='pdf-container'>
-          <Document file={pdf_file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
-            {Array.from(new Array(numPages || 0), (el, index) => (
-                <Page
-                key={`page_${index + 1}`}
-                pageNumber={index + 1}
-                width={width >= 1000 ? 800 : (width - 200) }
-                renderTextLayer={isLarge ? true : false }
-                />
-            ))}
-          </Document>
+    <PDFContainer onClick={isLarge ? null : () => handlePDFSelect(document)} className="pdf-container">
+      <Document file={pdf_file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+        {Array.from(new Array(numPages || 0), (el, index) => (
+          <Page
+            key={`page_${index + 1}`}
+            pageNumber={index + 1}
+            high
+            width={isLarge ? (width <= 1250 ? width / 1.45 : width / 3) : 400}
+            renderTextLayer={isLarge ? true : false}
+            customTextRenderer={customTextRenderer}
+            onMouseUp={handleHighlight}
+          />
+        ))}
+      </Document>
     </PDFContainer>
   );
 }
