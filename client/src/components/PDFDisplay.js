@@ -1,13 +1,13 @@
 import { PDFDisplayContainer, CloseButtonContainer } from "../styles/PDFDisplayStyles";
 import PDFasImage from '../components/PDFasImage';
 
-export default function PDFDisplay({document, handleClosePDFDisplay}){
+export default function PDFDisplay({PDFDoc, handleClosePDFDisplay}){
     return (
         <PDFDisplayContainer>
             <CloseButtonContainer >
                 <button onClick={handleClosePDFDisplay}>x</button>
             </CloseButtonContainer>
-                <PDFasImage document={document} isLarge={true}/>
+                <PDFasImage PDFDoc={PDFDoc} isLarge={true}/>
         </PDFDisplayContainer>
     )
 }

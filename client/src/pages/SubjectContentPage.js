@@ -34,7 +34,7 @@ export default function SubjectContentPage() {
   let subject = user.subjects.find((subject) => subject.serial_number === serialNumber)
 
   const documentsToDisplay = subject.documents.map((document) => (
-    <PDFasImage key={document.id} document={document} handlePDFSelect={handlePDFSelect}/>
+    <PDFasImage key={document.id} PDFDoc={document} handlePDFSelect={handlePDFSelect}/>
   ))
 
   return (
@@ -56,7 +56,7 @@ export default function SubjectContentPage() {
         </AddDocumentContainer>
       </AddDocumentWrapper>
     </ContentPageStyles>
-    {selectedPDF ? <PDFDisplay document={selectedPDF} handleClosePDFDisplay={handleClosePDFDisplay} /> : null}
+    {selectedPDF ? <PDFDisplay PDFDoc={selectedPDF} handleClosePDFDisplay={handleClosePDFDisplay} /> : null}
     </>
   );
 }
